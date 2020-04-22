@@ -1,0 +1,1251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c7dc1d1d-41f4-4cc6-b8ec-1edaf6d614a9" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/search$pacman.coverage" NAME="pacman Coverage Results" MODIFIED="1527586216984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="pacman.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pacman.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5616">
+              <caret line="215" column="24" lean-forward="false" selection-start-line="215" selection-start-column="18" selection-end-line="215" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/search.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5697">
+              <caret line="211" column="35" lean-forward="false" selection-start-line="211" selection-start-column="35" selection-end-line="211" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="searchAgents.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/searchAgents.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="628" column="0" lean-forward="true" selection-start-line="628" selection-start-column="0" selection-end-line="628" selection-end-column="0" />
+              <folding>
+                <element signature="e#1499#1785#0" expanded="false" />
+                <element signature="e#2040#5354#0" expanded="false" />
+                <element signature="e#2570#3922#0" expanded="false" />
+                <element signature="e#3975#4844#0" expanded="false" />
+                <element signature="e#4886#5354#0" expanded="false" />
+                <element signature="e#5411#5772#1" expanded="false" />
+                <element signature="e#5890#6625#0" expanded="false" />
+                <element signature="e#6664#6686#0" expanded="false" />
+                <element signature="e#6730#7152#0" expanded="false" />
+                <element signature="e#7198#8317#0" expanded="false" />
+                <element signature="e#8368#8912#0" expanded="false" />
+                <element signature="e#8958#9379#0" expanded="false" />
+                <element signature="e#9425#9822#0" expanded="false" />
+                <element signature="e#9880#10039#0" expanded="false" />
+                <element signature="e#10490#14177#0" expanded="false" />
+                <element signature="e#11440#11656#0" expanded="false" />
+                <element signature="e#11709#12093#0" expanded="false" />
+                <element signature="e#12148#13660#0" expanded="false" />
+                <element signature="e#13720#14175#0" expanded="false" />
+                <element signature="e#15476#15696#0" expanded="false" />
+                <element signature="e#16508#16525#0" expanded="false" />
+                <element signature="e#16643#17257#0" expanded="false" />
+                <element signature="e#17308#17788#0" expanded="false" />
+                <element signature="e#17835#18056#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__builtin__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons/__builtin__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="71199">
+              <caret line="2638" column="8" lean-forward="false" selection-start-line="2638" selection-start-column="8" selection-end-line="2638" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9855">
+              <caret line="368" column="27" lean-forward="false" selection-start-line="368" selection-start-column="27" selection-end-line="368" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6183">
+              <caret line="232" column="5" lean-forward="false" selection-start-line="232" selection-start-column="3" selection-end-line="232" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>positionsear</find>
+      <find>PositionSearchProblem</find>
+      <find>AnyFoodSearchProblem</find>
+      <find>getStartState</find>
+      <find>isGoalState</find>
+      <find>state</find>
+      <find>heuristic</find>
+      <find>costFn</find>
+      <find>YOUR CODE HERE</find>
+      <find>aslist</find>
+      <find>helper</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/pacman.py" />
+        <option value="$PROJECT_DIR$/game.py" />
+        <option value="$PROJECT_DIR$/searchAgents.py" />
+        <option value="$PROJECT_DIR$/commands.txt" />
+        <option value="$PROJECT_DIR$/search.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="32" />
+    <option name="y" value="79" />
+    <option name="width" value="1847" />
+    <option name="height" value="1094" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../multiagent/multiagent" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\人工智能\search" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.pacman">
+    <configuration default="false" name="search" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/search.py" />
+      <option name="PARAMETERS" value="-layout tinyMaze -pacman GoWestAgent" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="pacman" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\liu peng\Anaconda2\python2.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pacman.py" />
+      <option name="PARAMETERS" value="-p SearchAgent -a fn=astar,prob=FoodSearchProblem,heuristic=foodHeuristic" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="E:\python2.7.10\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pacman.py" />
+      <option name="PARAMETERS" value="-layout tinyMaze -pacman GoWestAgent" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <module name="search" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Python.search" />
+      <item index="1" class="java.lang.String" itemvalue="Python.pacman" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.pacman" />
+        <item index="1" class="java.lang.String" itemvalue="Python.search" />
+      </list>
+    </recent_temporary>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c7dc1d1d-41f4-4cc6-b8ec-1edaf6d614a9" name="Default" comment="" />
+      <created>1494900729060</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1494900729060</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="32" y="79" width="1847" height="1094" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2675014" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497349" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.75503355" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36334404" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39958376" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="26" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5025">
+          <caret line="201" column="0" lean-forward="true" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3000">
+          <caret line="466" column="19" lean-forward="true" selection-start-line="466" selection-start-column="19" selection-end-line="466" selection-end-column="19" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5450">
+          <caret line="221" column="14" lean-forward="false" selection-start-line="221" selection-start-column="8" selection-end-line="221" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5725">
+          <caret line="232" column="5" lean-forward="false" selection-start-line="232" selection-start-column="3" selection-end-line="232" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5375">
+          <caret line="215" column="24" lean-forward="false" selection-start-line="215" selection-start-column="18" selection-end-line="215" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5025">
+          <caret line="201" column="0" lean-forward="true" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5450">
+          <caret line="221" column="14" lean-forward="false" selection-start-line="221" selection-start-column="8" selection-end-line="221" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5725">
+          <caret line="232" column="5" lean-forward="false" selection-start-line="232" selection-start-column="3" selection-end-line="232" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5200">
+          <caret line="215" column="24" lean-forward="false" selection-start-line="215" selection-start-column="18" selection-end-line="215" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5025">
+          <caret line="201" column="0" lean-forward="true" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5450">
+          <caret line="221" column="14" lean-forward="false" selection-start-line="221" selection-start-column="8" selection-end-line="221" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5725">
+          <caret line="232" column="5" lean-forward="false" selection-start-line="232" selection-start-column="3" selection-end-line="232" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7400">
+          <caret line="303" column="18" lean-forward="false" selection-start-line="303" selection-start-column="18" selection-end-line="303" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5725">
+          <caret line="229" column="26" lean-forward="false" selection-start-line="194" selection-start-column="0" selection-end-line="229" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7400">
+          <caret line="303" column="18" lean-forward="false" selection-start-line="303" selection-start-column="18" selection-end-line="303" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5725">
+          <caret line="229" column="26" lean-forward="true" selection-start-line="194" selection-start-column="0" selection-end-line="229" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2375">
+          <caret line="386" column="0" lean-forward="false" selection-start-line="386" selection-start-column="0" selection-end-line="386" selection-end-column="0" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7575">
+          <caret line="303" column="18" lean-forward="false" selection-start-line="303" selection-start-column="18" selection-end-line="303" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3200">
+          <caret line="128" column="14" lean-forward="false" selection-start-line="128" selection-start-column="14" selection-end-line="128" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7575">
+          <caret line="303" column="18" lean-forward="false" selection-start-line="303" selection-start-column="18" selection-end-line="303" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11675">
+          <caret line="483" column="36" lean-forward="true" selection-start-line="483" selection-start-column="36" selection-end-line="483" selection-end-column="36" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7575">
+          <caret line="303" column="18" lean-forward="false" selection-start-line="303" selection-start-column="18" selection-end-line="303" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11675">
+          <caret line="483" column="36" lean-forward="true" selection-start-line="483" selection-start-column="36" selection-end-line="483" selection-end-column="36" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7575">
+          <caret line="303" column="18" lean-forward="false" selection-start-line="303" selection-start-column="18" selection-end-line="303" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11675">
+          <caret line="483" column="36" lean-forward="true" selection-start-line="483" selection-start-column="36" selection-end-line="483" selection-end-column="36" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7575">
+          <caret line="303" column="18" lean-forward="false" selection-start-line="303" selection-start-column="18" selection-end-line="303" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5600">
+          <caret line="224" column="37" lean-forward="true" selection-start-line="224" selection-start-column="37" selection-end-line="224" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7575">
+          <caret line="303" column="18" lean-forward="false" selection-start-line="303" selection-start-column="18" selection-end-line="303" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4050">
+          <caret line="167" column="0" lean-forward="false" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7400">
+          <caret line="303" column="18" lean-forward="false" selection-start-line="303" selection-start-column="18" selection-end-line="303" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3850">
+          <caret line="154" column="23" lean-forward="false" selection-start-line="154" selection-start-column="23" selection-end-line="154" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4050">
+          <caret line="167" column="0" lean-forward="false" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchTestClasses.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-516">
+          <caret line="784" column="23" lean-forward="false" selection-start-line="784" selection-start-column="23" selection-end-line="784" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6183">
+          <caret line="232" column="5" lean-forward="false" selection-start-line="232" selection-start-column="3" selection-end-line="232" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../searchAgents.py" />
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71199">
+          <caret line="2638" column="8" lean-forward="false" selection-start-line="2638" selection-start-column="8" selection-end-line="2638" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5616">
+          <caret line="215" column="24" lean-forward="false" selection-start-line="215" selection-start-column="18" selection-end-line="215" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="55" lean-forward="false" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9855">
+          <caret line="368" column="27" lean-forward="false" selection-start-line="368" selection-start-column="27" selection-end-line="368" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5697">
+          <caret line="211" column="35" lean-forward="false" selection-start-line="211" selection-start-column="35" selection-end-line="211" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="628" column="0" lean-forward="true" selection-start-line="628" selection-start-column="0" selection-end-line="628" selection-end-column="0" />
+          <folding>
+            <element signature="e#1499#1785#0" expanded="false" />
+            <element signature="e#2040#5354#0" expanded="false" />
+            <element signature="e#2570#3922#0" expanded="false" />
+            <element signature="e#3975#4844#0" expanded="false" />
+            <element signature="e#4886#5354#0" expanded="false" />
+            <element signature="e#5411#5772#1" expanded="false" />
+            <element signature="e#5890#6625#0" expanded="false" />
+            <element signature="e#6664#6686#0" expanded="false" />
+            <element signature="e#6730#7152#0" expanded="false" />
+            <element signature="e#7198#8317#0" expanded="false" />
+            <element signature="e#8368#8912#0" expanded="false" />
+            <element signature="e#8958#9379#0" expanded="false" />
+            <element signature="e#9425#9822#0" expanded="false" />
+            <element signature="e#9880#10039#0" expanded="false" />
+            <element signature="e#10490#14177#0" expanded="false" />
+            <element signature="e#11440#11656#0" expanded="false" />
+            <element signature="e#11709#12093#0" expanded="false" />
+            <element signature="e#12148#13660#0" expanded="false" />
+            <element signature="e#13720#14175#0" expanded="false" />
+            <element signature="e#15476#15696#0" expanded="false" />
+            <element signature="e#16508#16525#0" expanded="false" />
+            <element signature="e#16643#17257#0" expanded="false" />
+            <element signature="e#17308#17788#0" expanded="false" />
+            <element signature="e#17835#18056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
