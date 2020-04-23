@@ -48,7 +48,6 @@ class DStarLite(lpa.LPAStar):
         self.hitwall = problem.getWalls()
 
         # init the goal node (works backward)
-        print('~~~~~~~~~~~~~~~~~')
         print(1, self.start)
         self.set_g_rhsTuple(self.start, (BENCHMARK, 0)) #Algorithm step 05
         self.U.insert(self.start, self.calculateKey(self.start))  ##modify the k1, k2 in the U.insert
@@ -79,7 +78,7 @@ class DStarLite(lpa.LPAStar):
             else:
                 self.set_g_rhsTuple(u, (float("inf"), BENCHMARK))  # g(s) = infinity
                 self.updateVertex(u)  # update the vertex itself
-            for s in self._get_neighbors(u):
+            for s in self.getNeighbors(u):
                 self.updateVertex(s)  # update the successor vertices, in either case
             g_Sstart, rhs_Sstart = self.get_g_rhsTuple(self.start)  # update for next iteration ??
             
