@@ -11,14 +11,14 @@
 
 class Queue:
     def __init__(self):
-        self.size = 0
+        self._size = 0
         self.UMapToK1 = dict()  # maps u to key tuple
         self.K1MapToU = dict()  # maps k1 to u
         self.minKey = None
         self.minCount = 0
 
-    #def size(self):
-        #return self.size
+    def size(self):
+        return self._size
 
     def min_state(self):
         return self.minKey, self.minCount
@@ -33,7 +33,7 @@ class Queue:
         if not self.K1MapToU.get(k1):
             self.K1MapToU[k1] = []
         self.K1MapToU[k1].append(u)
-        self.size += 1
+        self._size += 1
         print(self.size)
         if self.minKey is None or k1 < self.minKey:  # find out the top key when using U.pop()
             self.minKey = k1
@@ -45,7 +45,7 @@ class Queue:
         if u in self.UMapToK1:
             # clean up the data first
             old_k1, old_k2 = self.UMapToK1[u]
-            self.size -= 1
+            self._size -= 1
             del self.UMapToK1[u] #remove the u from dict UMapToK1
             self.K1MapToU[old_k1].remove(u)
             if len(self.K1MapToU[old_k1]) == 0:
@@ -63,6 +63,7 @@ class Queue:
             self.minKey = None
         else:
             k1List = self.K1MapToU.keys()[:]
+            k1List = list(self.K1MapToU.keys())
             self.minKey = min(k1List)
             self.minCount = k1List.count(self.minKey)
 
@@ -77,7 +78,7 @@ class Queue:
             k1, k2 = self.UMapToK1[u] #k1 is the same for all the u
             u_kTopList.append((u, k1, k2))
         u_kTopList.sort(key=lambda x: x[2])  # sort the list by k2 to find the top key tuple
-        print(u_kTopList)
+        # print(u_kTopList)
         u_kTop = u_kTopList[0]
 
         return u_kTop
