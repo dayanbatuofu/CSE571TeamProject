@@ -316,7 +316,7 @@ def dStarLiteSearch(problem):
     dStarLite = dsl.DStarLite(problem)
     print('2----->', (x,y))
     print('3-------->',(dStarLite.width, dStarLite.height))
-    while (x, y) != problem.isGoalState(startState):
+    while (x, y) != problem.getGoalState():
         neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
         for neighborDirection in neighborDirections:
             dx, dy = Actions.directionToVector(neighborDirection)
