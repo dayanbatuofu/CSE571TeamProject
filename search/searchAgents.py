@@ -186,6 +186,9 @@ class PositionSearchProblem(search.SearchProblem):
     
     def getWalls(self):
         return self.walls
+    
+    def isWall(self, x, y):
+        return self.walls[x][y]
 
     def getSuccessors(self, state):
         """
