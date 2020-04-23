@@ -41,7 +41,6 @@ class LPAStar(object):
         self.hitwall = problem.getWalls()
 
         # init the start node
-        print('~~~~~~~~~~~~~~~~~')
         print(1, self.start)
         self.set_g_rhsTuple(self.start, (BENCHMARK, 0)) #Algorithm step 05
         self.U.insert(self.start, self.calculateKey(self.start))  ##modify the k1, k2 in the U.insert
@@ -119,10 +118,6 @@ class LPAStar(object):
             _, k1_goal, k2_goal = tup2
         else:
             raise ValueError("Right-side tuple contains unexpected arity: {0}".format(tup2))
-        
-        print(2,tup1)
-        print(3,tup2)
-        print(4, k1_top, k1_goal)
         
         if k1_top < k1_goal:
             return True  # first primary wins
