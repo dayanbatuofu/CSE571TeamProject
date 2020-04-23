@@ -24,7 +24,6 @@ class Queue:
         return self.minKey, self.minCount
 
     def insert(self, u, calculateKey):
-        print('k1, k2~~~~~~~~~~~~~~~~')
         k1, k2 = calculateKey
         if u in self.UMapToK1:
             self.removeU(u)  # if u is pushed twice, update it to the new value
@@ -34,10 +33,10 @@ class Queue:
             self.K1MapToU[k1] = []
         self.K1MapToU[k1].append(u)
         self._size += 1
-        print(self.size)
         if self.minKey is None or k1 < self.minKey:  # find out the top key when using U.pop()
             self.minKey = k1
             self.minCount = 1
+
         elif k1 == self.minKey:
             self.minCount += 1
 
@@ -58,17 +57,17 @@ class Queue:
                     self.computeMin()  # only compute if current minKey is exhausted
 
     def computeMin(self):
-        if self.size == 0:
+        if self.size() == 0:
             self.minCount = 0
             self.minKey = None
         else:
-            k1List = self.K1MapToU.keys()[:]
+            # k1List = self.K1MapToU.keys()[:]
             k1List = list(self.K1MapToU.keys())
             self.minKey = min(k1List)
             self.minCount = k1List.count(self.minKey)
 
     def topKey(self):
-        if self.size <= 0:
+        if self.size() <= 0:
             return None  # nothing to pop
 
         # find and break the ties
