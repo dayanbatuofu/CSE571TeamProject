@@ -37,10 +37,11 @@ class LPAStar(object):
         x_grid, y_grid = problem.getWalls().width, problem.getWalls().height
         self.width = x_grid
         self.height = y_grid
-        self.grid_costs = [[[float("inf"), float("inf")] for j in range(y_grid+1)] for i in range(x_grid+1)]
+        self.grid_costs = [[[float("inf"), float("inf")] for i in range(x_grid+1)] for j in range(y_grid+1)]
         self.hitwall = problem.getWalls()
 
         # init the start node
+        print('~~~~~~~~~~~~~~~~~')
         print(1, self.start)
         self.set_g_rhsTuple(self.start, (BENCHMARK, 0)) #Algorithm step 05
         self.U.insert(self.start, self.calculateKey(self.start))  ##modify the k1, k2 in the U.insert
@@ -56,7 +57,7 @@ class LPAStar(object):
 
     def updateVertex(self, u, extraNode = None):
         if extraNode is None:
-            extraNode = self._start
+            extraNode = self.start
 
         # update rhs (if not start node)
         if u != extraNode:
@@ -104,10 +105,25 @@ class LPAStar(object):
 
         if not isinstance(tup2, tuple):
             raise ValueError("Right-side tuple is not correct key tuple: {}".format(tup2))
-        
-        k1_top, k2_top = tup1
-        k1_goal, k2_goal = tup2
+            
+        if len(tup1) == 2:
+            k1_top, k2_top = tup1
+        elif len(tup1) == 3:
+            _, k1_top, k2_top = tup1
+        else:
+            raise ValueError("Left-side tuple contains unexpected arity: {0}".format(tup1))
 
+        if len(tup2) == 2:
+            k1_goal, k2_goal = tup2
+        elif len(tup2) == 3:
+            _, k1_goal, k2_goal = tup2
+        else:
+            raise ValueError("Right-side tuple contains unexpected arity: {0}".format(tup2))
+        
+        print(2,tup1)
+        print(3,tup2)
+        print(4, k1_top, k1_goal)
+        
         if k1_top < k1_goal:
             return True  # first primary wins
         elif k1_top > k1_goal:
@@ -129,7 +145,7 @@ class LPAStar(object):
         return neighbors
 
     def set_g_rhsTuple(self, u, tup):
-        x, y = u
+        x, y = u        
         if tup[0] is not BENCHMARK:
             self.grid_costs[x][y][0] = tup[0]
         if tup[1] is not BENCHMARK:
