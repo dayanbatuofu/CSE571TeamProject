@@ -41,23 +41,24 @@ class DStarLite(lpa.LPAStar):
         self.lastPath = None
 
         # set up the map/grid
-        x_grid, y_grid = problem.getWalls().height, problem.getWalls().width
+        x_grid, y_grid = problem.getWalls().width, problem.getWalls().height
         self.width = x_grid
         self.height = y_grid
-        self.grid_costs = [[[float("inf"), float("inf")] for i in range(x_grid)] for j in range(y_grid)]
+        self.grid_costs = [[[float("inf"), float("inf")] for j in range(y_grid)] for i in range(x_grid)]
         self.hitwall = problem.getWalls()
 
         # init the goal node (works backward)
-        print(1, self.start)
-        self.set_g_rhsTuple(self.start, (BENCHMARK, 0)) #Algorithm step 05
-        self.U.insert(self.start, self.calculateKey(self.start))  ##modify the k1, k2 in the U.insert
-
+        self.set_g_rhsTuple(self.goal, (BENCHMARK, 0)) #Algorithm step 05
+        self.U.insert(self.goal, self.calculateKey(self.goal))  ##modify the k1, k2 in the U.insert
+        
+        print('-----------start----------------')
         # find the path at least once, so we can take a step if needed
         self.computeShortestPath()
+        print('-----------end----------------')
 
     def calculateKey(self, u):
-        heuristic = self.h(u, self.goal) #manhattan distance
-        g_rhsTuple = (float("inf"), 0) if u == self.start else self.get_g_rhsTuple(u)
+        heuristic = self.h(u, self.start) #manhattan distance
+        g_rhsTuple = (float("inf"), 0) if u == self.goal else self.get_g_rhsTuple(u)
         return min(g_rhsTuple) + heuristic + self.km, min(g_rhsTuple)  #return keys = [k1,k2]
 
     # we do not define update_vertex, as it can safely inherit from the superclass
@@ -77,18 +78,20 @@ class DStarLite(lpa.LPAStar):
                 self.set_g_rhsTuple(u, (rhs_u, BENCHMARK))  # g(s) = rhs(s)
             else:
                 self.set_g_rhsTuple(u, (float("inf"), BENCHMARK))  # g(s) = infinity
-                self.updateVertex(u)  # update the vertex itself
+                self.updateVertex(u, self.goal)  # update the vertex itself
             for s in self.getNeighbors(u):
-                self.updateVertex(s)  # update the successor vertices, in either case
+                self.updateVertex(s, self.goal)  # update the successor vertices, in either case
             g_Sstart, rhs_Sstart = self.get_g_rhsTuple(self.start)  # update for next iteration ??
+            print('1------->', (g_Sstart, rhs_Sstart))
             
         self.hasPath = True
 
     # ########  external (pacman) helper functions  ########
     def nodeUpdate(self, u):
         x, y = u
-
+        
         startNeighbors = self.getNeighbors(self.start)
+        
         if u not in startNeighbors:
             raise ValueError("A wall cannot be discovered at a non-adjacent location; this breaks D* Lite.")
         self.changedEdges.append(u)
@@ -104,6 +107,7 @@ class DStarLite(lpa.LPAStar):
             self.updateVertex(changedEdge, self.goal)
         self.changedEdges = list()  # we've updated all the edges
         self.computeShortestPath()  # find the new shortest path
+        print('4--------->')
 
     def findNewStart(self):
         if self.start == self.goal:
@@ -115,13 +119,19 @@ class DStarLite(lpa.LPAStar):
 
         # move according to our best guess
         argmin = (None, float("inf"))
+        print('7----->', self.start)
+        print('8----->', self.getNeighbors(self.start))
         for neighbor in self.getNeighbors(self.start):
             weight = COST + self.get_g_rhsTuple(neighbor)[0]
             if weight < argmin[1]:
                 argmin = (neighbor, weight)
+            print('start----->', argmin)    
         self.path.append(self.start)
         self.start = argmin[0]
-
+        
+        print('end----->', argmin)   
+        print('9----->', self.start)
+        
         return self.start
 
     def extract_path(self, placeholder=None):

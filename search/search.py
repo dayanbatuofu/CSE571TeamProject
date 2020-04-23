@@ -320,12 +320,15 @@ def dStarLiteSearch(problem):
         for neighborDirection in neighborDirections:
             dx, dy = Actions.directionToVector(neighborDirection)
             nextx, nexty = int(x + dx), int(y + dy)
+            print('3----------->', (nextx,nexty))
             if problem.isWall(nextx, nexty):  #edge costs have changed
-                dStarLite.nodeUpdate((nextx, nexty))       
+                dStarLite.nodeUpdate((nextx, nexty))   
+        print('4~~~~~~~~~~~~~~~~~~')
     path = dStarLite.getRoute()
     directions = []
     directions = [getDirection(path[i], path[i+1]) for i in range(len(path)-1)]
     problem._expanded = dStarLite.popCount
+    print(directions)
     return directions
 
 
