@@ -314,16 +314,19 @@ def dStarLiteSearch(problem):
     startState = problem.getStartState()
     x, y = startState[0], startState[1]
     dStarLite = dsl.DStarLite(problem)
+    print('2----->', (x,y))
+    print('3-------->',(dStarLite.width, dStarLite.height))
     while (x, y) != problem.isGoalState(startState):
-        x, y = dStarLite.findNewStart()  # find the new start
         neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
         for neighborDirection in neighborDirections:
             dx, dy = Actions.directionToVector(neighborDirection)
             nextx, nexty = int(x + dx), int(y + dy)
-            print('3----------->', (nextx,nexty))
+            print('5------->', (nextx, nexty))
+            print('6------->', problem.isWall(nextx, nexty))
             if problem.isWall(nextx, nexty):  #edge costs have changed
-                dStarLite.nodeUpdate((nextx, nexty))   
-        print('4~~~~~~~~~~~~~~~~~~')
+                dStarLite.nodeUpdate((nextx, nexty))  
+        x, y = dStarLite.findNewStart()  # find the new start
+        print('10~~~~~~~~~~~~~~~~~~')
     path = dStarLite.getRoute()
     directions = []
     directions = [getDirection(path[i], path[i+1]) for i in range(len(path)-1)]
