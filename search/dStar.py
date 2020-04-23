@@ -44,15 +44,17 @@ class DStarLite(lpa.LPAStar):
         x_grid, y_grid = problem.getWalls().height, problem.getWalls().width
         self.width = x_grid
         self.height = y_grid
-        self.grid_costs = [[[float("inf"), float("inf")] for i in range(y_grid)] for j in range(x_grid)]
+        self.grid_costs = [[[float("inf"), float("inf")] for i in range(x_grid)] for j in range(y_grid)]
         self.hitwall = problem.getWalls()
 
         # init the goal node (works backward)
+        print('~~~~~~~~~~~~~~~~~')
+        print(1, self.start)
         self.set_g_rhsTuple(self.start, (BENCHMARK, 0)) #Algorithm step 05
         self.U.insert(self.start, self.calculateKey(self.start))  ##modify the k1, k2 in the U.insert
 
         # find the path at least once, so we can take a step if needed
-        self.compute_shortest_path()
+        self.computeShortestPath()
 
     def calculateKey(self, u):
         heuristic = self.h(u, self.goal) #manhattan distance
