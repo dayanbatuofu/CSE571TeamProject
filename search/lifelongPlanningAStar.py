@@ -32,16 +32,16 @@ class LPAStar(object):
         self.bestPath = None
         # self._last_path = None
         self.popCount = 0
+        self.changedEdges = list()  #new adder
 
         # set up the map/grid
         x_grid, y_grid = problem.getWalls().width, problem.getWalls().height
         self.width = x_grid
         self.height = y_grid
-        self.grid_costs = [[[float("inf"), float("inf")] for i in range(x_grid+1)] for j in range(y_grid+1)]
+        self.grid_costs = [[[float("inf"), float("inf")] for j in range(y_grid)] for j in range(x_grid)]
         self.hitwall = problem.getWalls()
 
         # init the start node
-        print(1, self.start)
         self.set_g_rhsTuple(self.start, (BENCHMARK, 0)) #Algorithm step 05
         self.U.insert(self.start, self.calculateKey(self.start))  ##modify the k1, k2 in the U.insert
 
@@ -81,9 +81,10 @@ class LPAStar(object):
 
         # implicitly assumes start to goal
         g_Sgoal, rhs_Sgoal = self.get_g_rhsTuple(self.goal) #rhs(goal) != g(goal)
-        goal_keys = self.calculateKey(self.goal)
-        top_keys = self.U.topKey()[1:3]  # slice the peek to get the priority tuple only
-        while (g_Sgoal != rhs_Sgoal) or (self.keyComparision(top_keys, goal_keys)):
+        # goal_keys = self.calculateKey(self.goal)
+        # top_keys = self.U.topKey()[1:3]  # slice the peek to get the priority tuple only
+        # while (g_Sgoal != rhs_Sgoal) or (self.keyComparision(top_keys, goal_keys)):
+        while (self.U.size() > 0 and self.keyComparision(self.U.topKey(), self.calculateKey(self.goal))) or (g_Sgoal != rhs_Sgoal):
             u = self.U.pop()
             self.popCount += 1
             g_u, rhs_u = self.get_g_rhsTuple(u)  # pull these again; they may be different than when it was pushed
@@ -132,7 +133,8 @@ class LPAStar(object):
                       (u[0], u[1] - 1),  # south
                       (u[0] - 1, u[1])]  # west
         neighbors = []
-        neighbors = [(x,y) for (x,y) in directions if x in range(self.width+1) and y in range(self.height+1)]
+
+        neighbors = [(x,y) for (x,y) in directions if x in range(self.width) and y in range(self.height)]
         # for direction in directions:
         #     x, y = direction
         #     if x in range(self.width-1) and y in range(self.height-1):
@@ -197,3 +199,25 @@ class LPAStar(object):
             if backward:
                 self.bestPath.reverse()  #find the point which is the closest one to the start
         return self.bestPath
+    
+        #TODO Later
+    
+        def nodeUpdate(self, u):
+            x, y = u
+            
+            # startNeighbors = self.getNeighbors(self.start)
+            
+            # if u not in startNeighbors:
+            #     raise ValueError("A wall cannot be discovered at a non-adjacent location; this breaks LPA.")
+            self.changedEdges.append(u)
+    
+            self.hitwall[x][y] = True
+            for neighbor in self.getNeighbors(u):
+                self.changedEdges.append(neighbor)  # add all wall-adjacent edges to the queue to be update_vertex'd
+    
+            # process edge updates
+            for changedEdge in self.changedEdges:
+                # self.updateVertex(changedEdge, self.goal)
+                self.updateVertex(changedEdge)
+            self.changedEdges = list()  # we've updated all the edges
+            print('4--------->')
