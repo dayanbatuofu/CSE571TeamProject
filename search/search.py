@@ -263,6 +263,17 @@ def lpaStarSearch(problem):
     explored = []
     nodeList = lpaStar.extract_path()[1:]  # remove the start position(It has already existed); compute the shorest path
     while not problem.isGoalState(startState):
+        #lpaStar.computeShortestPath()
+        #neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
+        # for neighborDirection in neighborDirections:
+        #     dx, dy = Actions.directionToVector(neighborDirection)
+        #     nextx, nexty = int(x + dx), int(y + dy)
+        #     print('5------->', (nextx, nexty))
+        #     print('6------->', problem.isWall(nextx, nexty))
+        #     if problem.isWall(nextx, nexty):  #edge costs have changed
+        #         lpaStar.nodeUpdate((nextx, nexty))  
+        
+        
         explored.append(startState)
         nextNode = nodeList.pop(0)
 
@@ -301,9 +312,9 @@ def lpaStarSearch(problem):
                 while nextNode != newnodeList.pop(0):
                     continue  # pop until they match, then continue with the updated path
                 nodeList = newnodeList
-        currNode = nextNode
+        startState = nextNode
 
-    explored.append(currNode)
+    explored.append(startState)
     directions = []
     directions = [getDirection(explored[i], explored[i+1]) for i in range(len(explored)-1)]
     problem.getStartState = (startState[0], startState[1])  # reset the start state, for accurate path cost eval
