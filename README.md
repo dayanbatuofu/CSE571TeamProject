@@ -11,7 +11,7 @@ lifelongPlanningAStar.py -- there are some `TODO` part at the end of code to mak
 
 `python pacman.py -l mediumMaze -p SearchAgent -a fn=lpastar, prob=UnknownPositionSearchProblem, heuristic=manhattanHeuristic --frameTime 0 -z`
 
-search.py -- main structure of D* and simply replanning with A* baseline is ready. main structure of `LPA*` should be discussed how to write. I put some reference in the main structure of LPA*, it may be useful. If you want to get the result of simply replanning with A* baseline, please run the command: 
+search.py -- main structure of D* and simply replanning with A* baseline is ready. main structure of `LPA*` should be discussed how to write. I put some reference in the main structure of `LPA*`, it may be useful. If you want to get the result of simply replanning with A* baseline, please run the command: 
 
 `python pacman.py -l mediumMaze -p SearchAgent -a fn=srastar, prob=UnknownPositionSearchProblem, heuristic=manhattanHeuristic --frameTime 0 -z`
 
