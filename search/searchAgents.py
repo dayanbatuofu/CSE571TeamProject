@@ -73,7 +73,7 @@ class SearchAgent(Agent):
     Note: You should NOT change any code in SearchAgent
     """
 
-    def __init__(self, fn='depthFirstSearch', prob='PositionSearchProblem', heuristic='nullHeuristic'):
+    def __init__(self, fn='depthFirstSearch', prob='UnknownPositionSearchProblem', heuristic='nullHeuristic'):
         # Warning: some advanced Python magic is employed below to find the right functions and problems
 
         # Get the search function from the name and heuristic
@@ -181,6 +181,9 @@ class PositionSearchProblem(search.SearchProblem):
         return isGoal
 
     #New adder
+    def setStartState(self, x, y):
+        self.startState = (x, y)
+
     def getGoalState(self):
         return self.goal
     
@@ -233,6 +236,133 @@ class PositionSearchProblem(search.SearchProblem):
             dx, dy = Actions.directionToVector(action)
             x, y = int(x + dx), int(y + dy)
             if self.walls[x][y]: return 999999
+            cost += self.costFn((x,y))
+        return cost
+
+class UnknownPositionSearchProblem(search.SearchProblem):
+    """
+    A search problem defines the state space, start state, goal test, successor
+    function and cost function.  This search problem can be used to find paths
+    to a particular point on the pacman board.
+
+    The state space consists of (x,y) positions in a pacman game.
+
+    Note: this search problem is fully specified; you should NOT change it.
+    """
+
+    def __init__(self, gameState, costFn = lambda x: 1, goal=(1,1), start=None, warn=True, visualize=True):
+        """
+        Stores the start and goal.
+
+        gameState: A GameState object (pacman.py)
+        costFn: A function from a search state (tuple) to a non-negative number
+        goal: A position in the gameState
+        """
+        self.walls = gameState.getWalls()
+        
+        self.primaryWalls = self.walls.deepCopy()
+        self.width = self.walls.width
+        self.height = self.walls.height
+        
+        # initialize the wall in the grid world
+        right, top = self.width-2, self.height-2
+        for x in range(1, right+1):  
+            for y in range(1, top+1):
+                self.primaryWalls[x][y] = False
+        
+        self.startState = gameState.getPacmanPosition()
+        if start != None: self.startState = start
+        self.goal = goal
+        self.costFn = costFn
+        self.visualize = visualize
+        if warn and (gameState.getNumFood() != 1 or not gameState.hasFood(*goal)):
+            print 'Warning: this does not look like a regular search maze'
+
+        # For display purposes
+        self._visited, self._visitedlist, self._expanded = {}, [], 0 # DO NOT CHANGE
+
+    def getStartState(self):
+        return self.startState
+
+    def isGoalState(self, state):
+        isGoal = state == self.goal
+
+        # For display purposes only
+        if isGoal and self.visualize:
+            self._visitedlist.append(state)
+            import __main__
+            if '_display' in dir(__main__):
+                if 'drawExpandedCells' in dir(__main__._display): #@UndefinedVariable
+                    __main__._display.drawExpandedCells(self._visitedlist) #@UndefinedVariable
+
+        return isGoal
+
+    #New adder
+    def getGoalState(self):
+        return self.goal
+    
+    def getWalls(self):
+        return self.walls
+    
+    def getPrimaryWalls(self):
+        return self.primaryWalls
+    
+    def setStartState(self, x, y):
+        self.startState = (x, y)
+    
+    def setPrimaryWalls(self, x, y):
+        self.primaryWalls[x][y] = True
+    
+    def isWall(self, x, y):
+        return self.walls[x][y]
+    
+    def isPrimaryWalls(self, x, y):
+        return self.primaryWalls[x][y]
+
+    def getSuccessors(self, state):
+        """
+        Returns successor states, the actions they require, and a cost of 1.
+
+         As noted in search.py:
+             For a given state, this should return a list of triples,
+         (successor, action, stepCost), where 'successor' is a
+         successor to the current state, 'action' is the action
+         required to get there, and 'stepCost' is the incremental
+         cost of expanding to that successor
+        """
+
+        successors = []
+        for action in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
+            x,y = state
+            dx, dy = Actions.directionToVector(action)
+            nextx, nexty = int(x + dx), int(y + dy)
+            #change this condition
+            if nextx in range(0, self.width) and nexty in range(0, self.height) and not self.primaryWalls[nextx][nexty]: #change this condition
+                nextState = (nextx, nexty)
+                cost = self.costFn(nextState)
+                successors.append( ( nextState, action, cost) )
+
+        # Bookkeeping for display purposes
+        self._expanded += 1 # DO NOT CHANGE
+        # if state not in self._visited:
+        #     self._visited[state] = True
+        #     self._visitedlist.append(state)
+
+        return successors
+
+    def getCostOfActions(self, actions):
+        """
+        Returns the cost of a particular sequence of actions. If those actions
+        include an illegal move, return 999999.
+        """
+        if actions == None: return 999999
+        x,y= self.getStartState()
+        cost = 0
+        for action in actions:
+            # Check figure out the next state and see whether its' legal
+            dx, dy = Actions.directionToVector(action)
+            x, y = int(x + dx), int(y + dy)
+            if self.primaryWalls[x][y]: return 999999  #change this condition
             cost += self.costFn((x,y))
         return cost
 
