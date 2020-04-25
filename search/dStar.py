@@ -45,7 +45,7 @@ class DStarLite(lpa.LPAStar):
         self.width = x_grid
         self.height = y_grid
         self.grid_costs = [[[float("inf"), float("inf")] for j in range(y_grid)] for i in range(x_grid)]
-        self.hitwall = problem.getWalls()
+        self.hitwall = problem.getPrimaryWalls()
 
         # init the goal node (works backward)
         self.set_g_rhsTuple(self.goal, (BENCHMARK, 0)) #Algorithm step 05
@@ -76,9 +76,11 @@ class DStarLite(lpa.LPAStar):
             elif g_u > rhs_u:
                 # locally overconsistent
                 self.set_g_rhsTuple(u, (rhs_u, BENCHMARK))  # g(s) = rhs(s)
+                print('------local overconsistent----------')
             else:
                 self.set_g_rhsTuple(u, (float("inf"), BENCHMARK))  # g(s) = infinity
                 self.updateVertex(u, self.goal)  # update the vertex itself
+                print('------local underconsistent----------')
             for s in self.getNeighbors(u):
                 self.updateVertex(s, self.goal)  # update the successor vertices, in either case
             g_Sstart, rhs_Sstart = self.get_g_rhsTuple(self.start)  # update for next iteration ??
@@ -133,11 +135,15 @@ class DStarLite(lpa.LPAStar):
         print('9----->', self.start)
         
         return self.start
+    
+    def getPath(self):
+        temp = list(self.path)
+        temp.append(self.start)
+        return temp
+    
+    ##This function has not been used now
 
     def extract_path(self, placeholder=None):
         return super(DStarLite, self).extract_path(backward=False)  # override gradient direction
 
-    def getRoute(self):
-        res = list(self.path)
-        res.append(self.start)
-        return res
+    
