@@ -39,7 +39,7 @@ class LPAStar(object):
         self.width = x_grid
         self.height = y_grid
         self.grid_costs = [[[float("inf"), float("inf")] for j in range(y_grid)] for j in range(x_grid)]
-        self.hitwall = problem.getWalls()
+        self.hitwall = problem.getPrimaryWalls()
 
         # init the start node
         self.set_g_rhsTuple(self.start, (BENCHMARK, 0)) #Algorithm step 05
@@ -177,12 +177,12 @@ class LPAStar(object):
             # traverses the weights and returns a series of coordinates corresponding to the shortest path
             best_path = []
 
-            # if not backward:
-            #     curr_pos = self.start  # go from start to goal (D*lite)
-            #     target_pos = self._goal
-            # else:
-            currPosition = self.goal  # go from goal to start (LPA*)
-            targetPosition = self.start
+            if not backward:
+                currPosition = self.start  # go from start to goal (D*lite)
+                targetPosition = self.goal
+            else:
+                currPosition = self.goal  # go from goal to start (LPA*)
+                targetPosition = self.start
             if self.get_g_rhsTuple(currPosition)[0] == float("inf"):
                 return None  # no path between start and goal
 
