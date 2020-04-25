@@ -236,7 +236,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         explored.append(parent[0])
                           
     return direction
-
+    
 
 def getDirection(currNode, nextNode):
     curr_x, curr_y = currNode
@@ -252,6 +252,70 @@ def getDirection(currNode, nextNode):
         if curr_y > next_y:
             return Directions.SOUTH
 
+def simpleReplanningAStarSearch(problem, heuristic):
+    """
+    Applies AStarSearch in the scenario where the agent only knows the goal
+    state and does not know the location of the walls.  When the agent finds out
+    a location of a wall from its successor states, it will need to restart the
+    AStarSearch.
+
+    We can initally test the implementation of this algorithm with tinyMaze grid
+    using this command:
+    python pacman.py -l tinyMaze -p SearchAgent -a fn=nrastar,prob=ReplanningSearchProblem,heuristic=manhattanHeuristic
+
+    Then we can verify that the algorithm works with other grids, using the
+    layouts from the layouts/ directory.
+    """
+    startState = problem.getStartState()
+    x, y = startState[0], startState[1]
+    explored = []
+    directionList = aStarSearch(problem, heuristic)
+    print('---list---', directionList)
+    while (x, y) != problem.getGoalState():
+        print('----------loop start----------')
+        explored.append((x, y))
+        action1 = directionList.pop(0)
+        print('--action1--', action1)
+        dx, dy = Actions.directionToVector(action1)
+        next_x, next_y = int(x + dx), int(y + dy)
+        print('1--->', (next_x, next_y))
+
+        
+        print('-------start neighbor--------')
+        # see the adjacent walls  ?? Why need this part
+        neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
+        for neighborDirection in neighborDirections:
+            dx, dy = Actions.directionToVector(neighborDirection)
+            nextx, nexty = int(x + dx), int(y + dy)
+            print('2---->', (nextx, nexty))
+            print('3---->', problem.isPrimaryWalls(nextx, nexty))
+            print('4---->', problem.isWall(nextx, nexty))
+            existObstacle = not problem.isPrimaryWalls(nextx, nexty) and problem.isWall(nextx, nexty)
+            if existObstacle:
+                problem.setPrimaryWalls(nextx, nexty)
+        print('-------end neighbor--------')
+    
+        # replan only if needed (i.e. we're about to bonk against a wall)
+        # if problem.isWall(next_x, next_y):
+        if problem.isPrimaryWalls(next_x, next_y): #next state is the obstacle
+            directionList = aStarSearch(problem, heuristic)
+            action2 = directionList.pop(0)
+            print('--action2--', action2)
+            dx, dy = Actions.directionToVector(action2)
+            next_x, next_y = int(x + dx), int(y + dy)       
+    
+        x, y = next_x, next_y
+        print('5---->',(x, y))
+        problem.setStartState(x, y)
+        print('6----->', explored)
+        print('----------loop end----------')
+
+    explored.append((x, y))
+    directions = []
+    directions = [getDirection(explored[i], explored[i+1]) for i in range(len(explored)-1)]
+    problem.setStartState(startState[0], startState[1])  # reset the start state, for accurate path cost eval
+    return directions
+
 
 def lpaStarSearch(problem):
     lpaStar = lpa.LPAStar(problem)
@@ -263,6 +327,10 @@ def lpaStarSearch(problem):
     explored = []
     nodeList = lpaStar.extract_path()[1:]  # remove the start position(It has already existed); compute the shorest path
     while not problem.isGoalState(startState):
+        
+        #------start------
+        #Below code may be useful
+        
         #lpaStar.computeShortestPath()
         #neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
         # for neighborDirection in neighborDirections:
@@ -272,6 +340,8 @@ def lpaStarSearch(problem):
         #     print('6------->', problem.isWall(nextx, nexty))
         #     if problem.isWall(nextx, nexty):  #edge costs have changed
         #         lpaStar.nodeUpdate((nextx, nexty))  
+        
+        #------end--------
         
         
         explored.append(startState)
@@ -339,7 +409,7 @@ def dStarLiteSearch(problem):
                 dStarLite.nodeUpdate((nextx, nexty))  
         # x, y = dStarLite.findNewStart()  # find the new start
         print('10~~~~~~~~~~~~~~~~~~')
-    path = dStarLite.getRoute()
+    path = dStarLite.getPath()
     directions = []
     directions = [getDirection(path[i], path[i+1]) for i in range(len(path)-1)]
     problem._expanded = dStarLite.popCount
@@ -352,5 +422,6 @@ bfs = breadthFirstSearch
 dfs = depthFirstSearch
 astar = aStarSearch
 ucs = uniformCostSearch
+srastar = simpleReplanningAStarSearch
 lpastar = lpaStarSearch
 dstarlite = dStarLiteSearch
