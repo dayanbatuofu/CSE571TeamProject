@@ -47,7 +47,7 @@ class DStarLite(lpa.LPAStar):
         # self.grid_costs = [[[float("inf"), float("inf")] for j in range(y_grid)] for i in range(x_grid)]
         self.width = problem.getWalls().width
         self.height = problem.getWalls().height
-        self.isWall = problem.getPrimaryWalls()
+        self.isPrimaryWall = problem.getPrimaryWalls()
 
         # init the goal node (works backward)
         self.g_rhsTuple = dict()
@@ -79,7 +79,7 @@ class DStarLite(lpa.LPAStar):
         # update rhs (if not start node)
         if u != extraNode:
             rhs_u = float("inf")  # if this node is a wall, the new rhs(s) is infinity
-            if not self.isWall[u[0]][u[1]]:
+            if not self.isPrimaryWall[u[0]][u[1]]:
                 neighbors = self.getNeighbors(u)
                 for neighbor in neighbors:
                     # rhs_u = min(rhs_u, self.get_g_rhsTuple(neighbor)[0] + COST) #calculate the rhs(s) in the next step
@@ -136,7 +136,7 @@ class DStarLite(lpa.LPAStar):
             raise ValueError("A wall cannot be discovered at a non-adjacent location; this breaks D* Lite.")
         self.changedEdges.append(u)
 
-        self.isWall[x][y] = True
+        self.isPrimaryWall[x][y] = True
         for neighbor in self.getNeighbors(u):
             self.changedEdges.append(neighbor)  # add all wall-adjacent edges to the queue to be update_vertex'd
 
