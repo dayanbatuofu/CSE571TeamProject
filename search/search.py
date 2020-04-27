@@ -24,6 +24,10 @@ import dStar as dsl
 # import d_star_lite_hans as dsl
 from game import Directions
 
+N = Directions.NORTH
+S = Directions.SOUTH
+E = Directions.EAST
+W = Directions.WEST
 
 class SearchProblem:
     """
@@ -269,46 +273,36 @@ def simpleReplanningAStarSearch(problem, heuristic):
     startState = problem.getStartState()
     x, y = startState[0], startState[1]
     explored = []
-    directionList = aStarSearch(problem, heuristic)
-    print('---list---', directionList)
+    directionList = aStarSearch(problem, heuristic)     # Get Optimal Path for grid without the knowledge
+                                                        # of the inner walls.
+#    print('---list---', directionList)
     while (x, y) != problem.getGoalState():
-        print('----------loop start----------')
+        #----------loop start----------
         explored.append((x, y))
-        action1 = directionList.pop(0)
-        print('--action1--', action1)
-        dx, dy = Actions.directionToVector(action1)
+        dx, dy = Actions.directionToVector(directionList.pop(0))
         next_x, next_y = int(x + dx), int(y + dy)
-        print('1--->', (next_x, next_y))
+#        print('1--->', (next_x, next_y))
 
-        
-        print('-------start neighbor--------')
-        # see the adjacent walls  ?? Why need this part
         neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
         for neighborDirection in neighborDirections:
             dx, dy = Actions.directionToVector(neighborDirection)
-            nextx, nexty = int(x + dx), int(y + dy)
-            print('2---->', (nextx, nexty))
-            print('3---->', problem.isPrimaryWalls(nextx, nexty))
-            print('4---->', problem.isWall(nextx, nexty))
-            existObstacle = not problem.isPrimaryWalls(nextx, nexty) and problem.isWall(nextx, nexty)
+            nbrx, nbry = int(x + dx), int(y + dy)
+            # Here we check whether the neighbor location has a wall or not
+            existObstacle = not problem.isPrimaryWalls(nbrx, nbry) and problem.isWall(nbrx, nbry)
             if existObstacle:
-                problem.setPrimaryWalls(nextx, nexty)
-        print('-------end neighbor--------')
+                problem.setPrimaryWalls(nbrx, nbry)        
     
-        # replan only if needed (i.e. we're about to bonk against a wall)
-        # if problem.isWall(next_x, next_y):
-        if problem.isPrimaryWalls(next_x, next_y): #next state is the obstacle
+        # Now that we have checked all the neighbors, replanning is done if needed i.e, when
+        # there is an internal wall encountered at the next grid.
+        if problem.isPrimaryWalls(next_x, next_y):  #if next state is the obstacle
             directionList = aStarSearch(problem, heuristic)
-            action2 = directionList.pop(0)
-            print('--action2--', action2)
-            dx, dy = Actions.directionToVector(action2)
+            dx, dy = Actions.directionToVector(directionList.pop(0))
             next_x, next_y = int(x + dx), int(y + dy)       
     
-        x, y = next_x, next_y
-        print('5---->',(x, y))
-        problem.setStartState(x, y)
-        print('6----->', explored)
-        print('----------loop end----------')
+        x, y = next_x, next_y           # Update the x,y location to the next grid
+        problem.setStartState(x, y)     # Since Simple Replanning A* recalculates every time it encounters
+                                        # a wall, the problem's start state is reset everytime
+
 
     explored.append((x, y))
     directions = []
@@ -317,67 +311,52 @@ def simpleReplanningAStarSearch(problem, heuristic):
     return directions
 
 
-def lpaStarSearch(problem):
-    lpaStar = lpa.LPAStar(problem)
+def lpaStarSearch(problem):  
+    # This is the main procedure of the LPA* algorithm. Its structured is created
+    # based on the pseudo code provided in the reference "https://www.aaai.org/Papers/AAAI/2002/AAAI02-072.pdf"    
     
-    if problem.isGoalState(problem.getStartState()):
-        return '{}--->{}'.format('Stop the game','Goal has been found')
-
-    startState = tuple(problem.getStartState())
+    lpaStar = lpa.LPAStar(problem)
+    startState = problem.getStartState()
     explored = []
-    nodeList = lpaStar.extract_path()[1:]  # remove the start position(It has already existed); compute the shorest path
-    while not problem.isGoalState(startState):
-        
-        #------start------
-        #Below code may be useful
-        
-        #lpaStar.computeShortestPath()
-        #neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
-        # for neighborDirection in neighborDirections:
-        #     dx, dy = Actions.directionToVector(neighborDirection)
-        #     nextx, nexty = int(x + dx), int(y + dy)
-        #     print('5------->', (nextx, nexty))
-        #     print('6------->', problem.isWall(nextx, nexty))
-        #     if problem.isWall(nextx, nexty):  #edge costs have changed
-        #         lpaStar.nodeUpdate((nextx, nexty))  
-        
-        #------end--------
-        
-        
+    nodeList = lpaStar.Find_Path()[1:]  # compute the shortest path from the start location
+    
+    while startState != problem.getGoalState():     # Until the terminal state is reached
         explored.append(startState)
-        nextNode = nodeList.pop(0)
-
-        # see the adjacent walls
-        neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
-        for neighborDirection in neighborDirections:
+        nextNode = nodeList.pop(0)             
+        neighborDirections = [N,S,E,W]
+        for neighborDirection in neighborDirections:    # For all the successors update the wall information
             dx, dy = Actions.directionToVector(neighborDirection)
             next_x, next_y = int(startState[0] + dx), int(startState[1] + dy)
             if problem.isWall(next_x, next_y):
-                lpaStar.make_wall_at((next_x, next_y))
-
-        if lpaStar.hasPath is False:  #When agent meet the obstacle
-            # something changed! we must adapt
-            newnodeList = lpaStar.extract_path()
+                lpaStar.Update_Wall_Info((next_x, next_y))
+            
+        if lpaStar.hasPath is False:  # When agent meet the obstacle
+            # need to replan
+            newnodeList = lpaStar.Find_Path()
             if nextNode not in newnodeList:
-                # we've totally diverged, and need to backtrack
-                back_path = []
-                old_path = explored[:]
-                explored.pop()  # remove the current position, it's not part of the back path
-                trace_tup = explored.pop() ## Find the point before the current postion
- 
-                # this gets us from the current position back to the intersection point
-                while trace_tup not in newnodeList:
-                    back_path.append(trace_tup)
-                    trace_tup = explored.pop()
+                # This is the point where the path has to be back tracked              
+                valid_path = list(explored)
+                explored.pop()  # remove the current position
+                newtrace = explored.pop() ## Find the point before the current postion
+                # go back to the divergence point
+                while newtrace not in newnodeList:
+                    newtrace = explored.pop()
 
-                # this gets us from the original start to the intersection point
-                while newnodeList.pop(0) != trace_tup:
+                # pop until we reach the intersection point
+                while newnodeList.pop(0) != newtrace:
                     continue
-
-                # reassemble the pieces
-                explored = old_path + back_path + [trace_tup]
-                coord_list = newnodeList
-                nextNode = coord_list.pop(0)
+                
+                setindex = 0
+                while setindex == 0:
+                    lastpop = valid_path.pop()
+                    if lastpop == newtrace:
+                        setindex = 1
+                # Get the corrected path
+                explored = valid_path + [newtrace]
+                
+                nodeList = newnodeList
+                nextNode = nodeList.pop(0)
+                
             else:
                 while nextNode != newnodeList.pop(0):
                     continue  # pop until they match, then continue with the updated path
@@ -387,7 +366,8 @@ def lpaStarSearch(problem):
     explored.append(startState)
     directions = []
     directions = [getDirection(explored[i], explored[i+1]) for i in range(len(explored)-1)]
-    problem.getStartState = (startState[0], startState[1])  # reset the start state, for accurate path cost eval
+    # specify the original start state, to show correct path cost eval
+    problem.setStartState = (startState[0], startState[1])  
     problem._expanded = lpaStar.popCount
     return directions
 
