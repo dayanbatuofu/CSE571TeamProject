@@ -14,7 +14,7 @@ from priorityQueue import Queue
 
 # global variables
 COST = 1
-BENCHMARK = None
+# BENCHMARK = None
 
 # assumptions:
 # all edge weights are either 1 (adjacent) or infinity (non-adjacent or walls)
@@ -27,31 +27,31 @@ class LPAStar(object):
         self.U = Queue()
         self.start = problem.getStartState()
         self.goal = problem.getGoalState()  #Add getGoalState in the searchAgent
+        self.next = None
         
         self.hasPath = False
         self.bestPath = None
         # self._last_path = None
+        self.path = []
         self.popCount = 0
         self.changedEdges = list()  #new adder
-
-        # set up the map/grid
-        x_grid, y_grid = problem.getWalls().width, problem.getWalls().height
-        self.width = x_grid
-        self.height = y_grid
-        self.grid_costs = [[[float("inf"), float("inf")] for j in range(y_grid)] for j in range(x_grid)]
-        self.hitwall = problem.getPrimaryWalls()
+          
+        self.width = problem.getWalls().width
+        self.height = problem.getWalls().height
+        self.isPrimaryWall = problem.getPrimaryWalls()
 
         # init the start node
-        self.set_g_rhsTuple(self.start, (BENCHMARK, 0)) #Algorithm step 05
+        self.g_rhsTuple = dict()
+        for i in range(self.width):
+            for j in range(self.height):
+                self.g_rhsTuple[(i,j)] = [float("inf"),float("inf")]
+        
+        self.g_rhsTuple[self.start][1] = 0
         self.U.insert(self.start, self.calculateKey(self.start))  ##modify the k1, k2 in the U.insert
 
     def calculateKey(self, u):  #u: first time is the goal state(x,y)
         heuristic = self.h(u, self.goal) #manhattan distance
-        g_rhsTuple = (float("inf"), 0) if u == self.start else self.get_g_rhsTuple(u)
-        # if u == self.start:
-            # g_rhsTuple = (float("inf"), 0)
-        # else:
-            # g_rhsTuple = self.get_g_rhsTuple(u) # obtain the rhs(s) when s is the goal
+        g_rhsTuple = self.g_rhsTuple[u]
         return min(g_rhsTuple) + heuristic, min(g_rhsTuple)  #return keys = [k1,k2]
 
     def updateVertex(self, u, extraNode = None):
@@ -61,17 +61,21 @@ class LPAStar(object):
         # update rhs (if not start node)
         if u != extraNode:
             rhs_u = float("inf")  # if this node is a wall, the new rhs(s) is infinity
-            if not self.hitwall[u[0]][u[1]]:
+            if not self.isPrimaryWall[u[0]][u[1]]:
                 neighbors = self.getNeighbors(u)
                 for neighbor in neighbors:
-                    rhs_u = min(rhs_u, self.get_g_rhsTuple(neighbor)[0] + COST) #calculate the rhs(s) in the next step
-            self.set_g_rhsTuple(u, (BENCHMARK, rhs_u)) #update the rhs(s)
+                    # rhs_u = min(rhs_u, self.get_g_rhsTuple(neighbor)[0] + COST) #calculate the rhs(s) in the next step
+                    rhs_u = min(rhs_u, self.g_rhsTuple[neighbor][0] + COST) #calculate the rhs(s) in the next step
+            # self.set_g_rhsTuple(u, (BENCHMARK, rhs_u)) #update the rhs(s)
+            self.g_rhsTuple[u][1] = rhs_u  #update the rhs(s)
+            
 
         # remove from U
         self.U.removeU(u)
 
         # re-insert if locally underconsistent (inequality partially satisfied by upstream computeShortestPath)
-        g, rhs = self.get_g_rhsTuple(u)
+        # g, rhs = self.get_g_rhsTuple(u)
+        g, rhs = self.g_rhsTuple[u]
         if g != rhs:
             self.U.insert(u, self.calculateKey(u)) #U.insert is the function of CalcualteKey(u)
 
@@ -80,23 +84,30 @@ class LPAStar(object):
             return  # don't try to re-compute an already-computed path, the PQ is empty
 
         # implicitly assumes start to goal
-        g_Sgoal, rhs_Sgoal = self.get_g_rhsTuple(self.goal) #rhs(goal) != g(goal)
-        # goal_keys = self.calculateKey(self.goal)
-        # top_keys = self.U.topKey()[1:3]  # slice the peek to get the priority tuple only
-        # while (g_Sgoal != rhs_Sgoal) or (self.keyComparision(top_keys, goal_keys)):
-        while (self.U.size() > 0 and self.keyComparision(self.U.topKey(), self.calculateKey(self.goal))) or (g_Sgoal != rhs_Sgoal):
+        g_Sgoal, rhs_Sgoal = self.g_rhsTuple[self.goal]
+        topKeys = self.U.topKey()[1:3]
+        calculateKey = self.calculateKey(self.goal)
+        while self.keyComparision(topKeys, calculateKey) or (g_Sgoal != rhs_Sgoal):
             u = self.U.pop()
             self.popCount += 1
-            g_u, rhs_u = self.get_g_rhsTuple(u)  # pull these again; they may be different than when it was pushed
+            g_u, rhs_u = self.g_rhsTuple[u]
             if g_u > rhs_u:
                 # locally overconsistent
-                self.set_g_rhsTuple(u, (rhs_u, BENCHMARK))  # g(s) = rhs(s)
+                self.g_rhsTuple[u][0] = self.g_rhsTuple[u][1]
+                print('------local overconsistent----------', (self.g_rhsTuple[u]))
             else:
-                self.set_g_rhsTuple(u, (float("inf"), BENCHMARK))  # g(s) = infinity
+                self.g_rhsTuple[u][0] = float("inf")
                 self.updateVertex(u)  # update the vertex itself
             for s in self.getNeighbors(u):
                 self.updateVertex(s)  # update the successor vertices, in either case
-
+                               
+            # prep variables for next loop invariant test        
+            if self.U.size() == 0:
+                break  # all done! the whole graph is consistent
+            g_Sgoal, rhs_Sgoal = self.g_rhsTuple[self.goal]
+            calculateKey = self.calculateKey(self.goal)
+            topKeys = self.U.topKey()[1:3]  
+        
         self.hasPath = True
 
     def keyComparision(self, tup1, tup2):
@@ -135,28 +146,74 @@ class LPAStar(object):
         neighbors = []
 
         neighbors = [(x,y) for (x,y) in directions if x in range(self.width) and y in range(self.height)]
-        # for direction in directions:
-        #     x, y = direction
-        #     if x in range(self.width-1) and y in range(self.height-1):
-        #         neighbors.append(direction)
         return neighbors
 
-    def set_g_rhsTuple(self, u, tup):
-        x, y = u        
-        if tup[0] is not BENCHMARK:
-            self.grid_costs[x][y][0] = tup[0]
-        if tup[1] is not BENCHMARK:
-            self.grid_costs[x][y][1] = tup[1]
+    # def set_g_rhsTuple(self, u, tup):
+    #     x, y = u        
+    #     if tup[0] is not BENCHMARK:
+    #         self.grid_costs[x][y][0] = tup[0]
+    #     if tup[1] is not BENCHMARK:
+    #         self.grid_costs[x][y][1] = tup[1]
 
-    def get_g_rhsTuple(self, u):
-        x, y = u
-        return self.grid_costs[x][y]
+    # def get_g_rhsTuple(self, u):
+    #     x, y = u
+    #     return self.grid_costs[x][y]
+    
+    # def nodeUpdate(self, u):
+    #     x, y = u        
+    #     self.changedEdges.append(u)
 
-    #TODO change later
+    #     self.isPrimaryWall[x][y] = True
+    #     for neighbor in self.getNeighbors(u):
+    #         self.changedEdges.append(neighbor)  # add all wall-adjacent edges to the queue to be update_vertex'd
+
+    #     # process edge updates
+    #     for changedEdge in self.changedEdges:
+    #         self.updateVertex(changedEdge)
+    #     self.changedEdges = list()  # we've updated all the edges
+    #     print('4--------->')
+        
+    # def nextState(self):
+    #     if self.next == self.goal:
+    #         return self.next  # we're already at the goal; no need to move
+        
+    #     if self.next == None:
+    #         self.next = self.start
+    
+    #     print('7----->', self.next)
+    #     print('8----->', self.getNeighbors(self.next))
+    #     tempdict = dict()
+    #     templist = list()
+    #     for neighbor in self.getNeighbors(self.next):
+    #         tempdict[self.calculateKey(neighbor)] = neighbor
+    #         templist.append(self.calculateKey(neighbor))
+        
+    #     print('---befor change list---', templist)
+        
+    #     templist.sort(key=lambda tup:tup[0])
+    #     print('---after change list---', templist)
+    #     for index in range(len(templist)-1):
+    #         if templist[index][0] == templist[index+1][0] and templist[index][1] > templist[index+1][1]:
+    #             templist[index], templist[index+1] = templist[index+1], templist[index]
+        
+    #     self.next = tempdict[templist[0]]
+    #     if self.next == self.start:
+    #         self.next = tempdict[templist[1]]
+    #     self.path.append(self.next)
+    #     # self.U.insert(self.next, self.calculateKey(self.next))
+        
+    #     print('9----->', self.next)
+        
+    #     return self.next
+    
+    # def getPath(self):
+    #     temp = list(self.path)
+    #     temp.append(self.start)
+    #     return temp
+
     def make_wall_at(self, u):
         x, y = u
-
-        if self.hitwall[x][y]:
+        if self.isPrimaryWall[x][y]:
             return
 
         # path might have changed!
@@ -165,7 +222,7 @@ class LPAStar(object):
         self.bestPath = None
 
         # "update the edge weights", or more accurately, update the adjacent, affected vertices
-        self.hitwall[x][y] = True
+        self.isPrimaryWall[x][y] = True
         self.updateVertex(u)
 
     def extract_path(self, backward=True):
@@ -183,14 +240,16 @@ class LPAStar(object):
             else:
                 currPosition = self.goal  # go from goal to start (LPA*)
                 targetPosition = self.start
-            if self.get_g_rhsTuple(currPosition)[0] == float("inf"):
+            if self.g_rhsTuple[currPosition][0] == float("inf"):    
+            # if self.get_g_rhsTuple(currPosition)[0] == float("inf"):
                 return None  # no path between start and goal
-
+            
             while currPosition != targetPosition:
                 best_path.append(currPosition)
                 currNeighbors = self.getNeighbors(currPosition)
                 for i in range(len(currNeighbors)):
-                    currNeighbors[i] = (currNeighbors[i], self.get_g_rhsTuple(currNeighbors[i])[1])
+                    currNeighbors[i] = (currNeighbors[i], self.g_rhsTuple[currNeighbors[i]][1])
+                    # currNeighbors[i] = (currNeighbors[i], self.get_g_rhsTuple(currNeighbors[i])[1])
                 currNeighbors.sort(key=lambda tup: tup[1])
                 currPosition = currNeighbors[0][0]  ## It should be tuple(x,y)
 
@@ -200,24 +259,3 @@ class LPAStar(object):
                 self.bestPath.reverse()  #find the point which is the closest one to the start
         return self.bestPath
     
-        #TODO Later
-    
-        def nodeUpdate(self, u):
-            x, y = u
-            
-            # startNeighbors = self.getNeighbors(self.start)
-            
-            # if u not in startNeighbors:
-            #     raise ValueError("A wall cannot be discovered at a non-adjacent location; this breaks LPA.")
-            self.changedEdges.append(u)
-    
-            self.hitwall[x][y] = True
-            for neighbor in self.getNeighbors(u):
-                self.changedEdges.append(neighbor)  # add all wall-adjacent edges to the queue to be update_vertex'd
-    
-            # process edge updates
-            for changedEdge in self.changedEdges:
-                # self.updateVertex(changedEdge, self.goal)
-                self.updateVertex(changedEdge)
-            self.changedEdges = list()  # we've updated all the edges
-            print('4--------->')
