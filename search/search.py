@@ -317,33 +317,31 @@ def simpleReplanningAStarSearch(problem, heuristic):
     return directions
 
 
-def lpaStarSearch(problem):
-    lpaStar = lpa.LPAStar(problem)
+def lpaStarSearch(problem):  
+    # if problem.isGoalState(problem.getStartState()):
+    #     return '{}--->{}'.format('Stop the game','Goal has been found')
+    # x, y = startState[0], startState[1]
+    # while (x, y) != problem.getGoalState():
+    # while True:
+    #     lpaStar.computeShortestPath()
+    #     neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
+    #     for neighborDirection in neighborDirections:
+    #         dx, dy = Actions.directionToVector(neighborDirection)
+    #         nextx, nexty = int(x + dx), int(y + dy)
+    #         print('5------->', (nextx, nexty))
+    #         print('6------->', problem.isWall(nextx, nexty))
+    #         if problem.isWall(nextx, nexty):  #edge costs have changed
+    #             lpaStar.nodeUpdate((nextx, nexty))  
+        
+    #     x, y = lpaStar.nextState()
+    #     print('10~~~~~~~~~~~~~~~~~~')
     
-    if problem.isGoalState(problem.getStartState()):
-        return '{}--->{}'.format('Stop the game','Goal has been found')
-
-    startState = tuple(problem.getStartState())
+    lpaStar = lpa.LPAStar(problem)
+    startState = problem.getStartState()
     explored = []
     nodeList = lpaStar.extract_path()[1:]  # remove the start position(It has already existed); compute the shorest path
-    while not problem.isGoalState(startState):
-        
-        #------start------
-        #Below code may be useful
-        
-        #lpaStar.computeShortestPath()
-        #neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
-        # for neighborDirection in neighborDirections:
-        #     dx, dy = Actions.directionToVector(neighborDirection)
-        #     nextx, nexty = int(x + dx), int(y + dy)
-        #     print('5------->', (nextx, nexty))
-        #     print('6------->', problem.isWall(nextx, nexty))
-        #     if problem.isWall(nextx, nexty):  #edge costs have changed
-        #         lpaStar.nodeUpdate((nextx, nexty))  
-        
-        #------end--------
-        
-        
+    while startState != problem.getGoalState():
+    # while not problem.isGoalState(startState): 
         explored.append(startState)
         nextNode = nodeList.pop(0)
 
@@ -354,14 +352,14 @@ def lpaStarSearch(problem):
             next_x, next_y = int(startState[0] + dx), int(startState[1] + dy)
             if problem.isWall(next_x, next_y):
                 lpaStar.make_wall_at((next_x, next_y))
-
+                
         if lpaStar.hasPath is False:  #When agent meet the obstacle
             # something changed! we must adapt
             newnodeList = lpaStar.extract_path()
             if nextNode not in newnodeList:
                 # we've totally diverged, and need to backtrack
                 back_path = []
-                old_path = explored[:]
+                old_path = list(explored)
                 explored.pop()  # remove the current position, it's not part of the back path
                 trace_tup = explored.pop() ## Find the point before the current postion
  
@@ -376,18 +374,20 @@ def lpaStarSearch(problem):
 
                 # reassemble the pieces
                 explored = old_path + back_path + [trace_tup]
-                coord_list = newnodeList
-                nextNode = coord_list.pop(0)
+                nodeList = newnodeList
+                nextNode = nodeList.pop(0)
             else:
                 while nextNode != newnodeList.pop(0):
                     continue  # pop until they match, then continue with the updated path
                 nodeList = newnodeList
         startState = nextNode
 
+
     explored.append(startState)
+    # path = lpaStar.getPath()
     directions = []
     directions = [getDirection(explored[i], explored[i+1]) for i in range(len(explored)-1)]
-    problem.getStartState = (startState[0], startState[1])  # reset the start state, for accurate path cost eval
+    problem.setStartState = (startState[0], startState[1])  # reset the start state, for accurate path cost eval
     problem._expanded = lpaStar.popCount
     return directions
 
