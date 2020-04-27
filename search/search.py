@@ -382,9 +382,8 @@ def lpaStarSearch(problem):
                 nodeList = newnodeList
         startState = nextNode
 
-
-    explored.append(startState)
     # path = lpaStar.getPath()
+    explored.append(startState)
     directions = []
     directions = [getDirection(explored[i], explored[i+1]) for i in range(len(explored)-1)]
     problem.setStartState = (startState[0], startState[1])  # reset the start state, for accurate path cost eval
