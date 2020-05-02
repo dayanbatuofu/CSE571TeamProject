@@ -1,20 +1,32 @@
-# CSE571TeamProject
+# CSE571TeamProject(Life-long Planning for Path-Finding in Pacman Domain)
 
+This project is base on Pacman domain to implement different algorithms. Note that command `valgrind` should be installed before running memory test.
 
-Below code should be modified:
+We add or modify these following code:
 
-dStar.py -- this part has already been done. Please check the code based on algorithm. If you want to get the result, please run the command: 
+*`search\seach.py`
+*`search\searchAgent.py`
+*`search\lifelongPlanningAStar.py`
+*`search\dStarLite.py`
+*`search\util.py`
 
-`python pacman.py -l mediumMaze -p SearchAgent -a fn=dstarlite,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
+### Following command will show the example to run different algorithms:
 
-lifelongPlanningAStar.py -- there are some `TODO` part at the end of code to make `LPA*` run smoothly. Please check the code based on algorithm. If you want to get the result, please run the command:  
+#### A*
+`python pacman.py -l mediumMaze -p SearchAgent -a fn=astar,prob=PositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
 
-`python pacman.py -l mediumMaze -p SearchAgent -a fn=lpastar,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
-
-search.py -- main structure of D* and simply replanning with A* baseline is ready. main structure of `LPA*` should be discussed how to write. I put some reference in the main structure of `LPA*`, it may be useful. If you want to get the result of simply replanning with A* baseline, please run the command: 
+#### Simple Replanning A*
 
 `python pacman.py -l mediumMaze -p SearchAgent -a fn=srastar,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
 
-searchAgent.py -- I write a new Class named `UnknownPositionSearchProblem` based on reference code. The reason I use a new Class is that we should firstly set an initial grid world without any information. It means that we don't know the wall in the grid world at the beginning time. Then we could use D* lite, LPA* and simple replanning with A* to help the pacman to find the optimal path. The important part in Class `UnknownPositionSearchProblem` is that I set `self.wall[x][y] = False` based on reference code. This setting means that the pacman don't know where is the wall.
+#### Lifelong Planning A*
 
-priorityQueue.py -- this part is done. You could change structure as you want.
+`python pacman.py -l mediumMaze -p SearchAgent -a fn=lpastar,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
+
+#### D* Lite
+
+### Following command will show the example to do the memory and running time testing for different algorithms
+
+`test python pacman.py -l mediumMaze -p SearchAgent -a fn=dstarlite,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
+
+`valgrind python pacman.py -l mediumMaze -p SearchAgent -a fn=dstarlite,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
