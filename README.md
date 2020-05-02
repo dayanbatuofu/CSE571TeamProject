@@ -8,6 +8,8 @@
 
 ## GITHUB: https://github.com/dayanbatuofu/CSE571TeamProject
 
+## Python Version: 2.7
+
 ## CONTRIBUTIONS OF EACH TEAM MEMBER:
 
 	The  project  responsibilities  shared  by  each  team  memberare provided in this section.Siddhartha  and  
