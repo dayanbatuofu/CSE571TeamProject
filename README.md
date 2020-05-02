@@ -4,13 +4,13 @@ This project is base on Pacman domain to implement different algorithms. Note th
 
 We add or modify these following code:
 
-*`search\seach.py`
-*`search\searchAgent.py`
-*`search\lifelongPlanningAStar.py`
-*`search\dStarLite.py`
-*`search\util.py`
+* `search\seach.py`
+* `search\searchAgent.py`
+* `search\lifelongPlanningAStar.py`
+* `search\dStarLite.py`
+* `search\util.py`
 
-### Following command will show the example to run different algorithms:
+### Following command will show the example to run the different algorithms:
 
 #### A*
 `python pacman.py -l mediumMaze -p SearchAgent -a fn=astar,prob=PositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
@@ -25,7 +25,7 @@ We add or modify these following code:
 
 #### D* Lite
 
-### Following command will show the example to do the memory and running time testing for different algorithms
+### Following command will show the example to obtain the memory and running time testing for different 
 
 `test python pacman.py -l mediumMaze -p SearchAgent -a fn=dstarlite,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
 
