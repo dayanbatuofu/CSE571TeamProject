@@ -40,7 +40,6 @@ from game import Actions
 import util
 import time
 import search
-import copy
 
 class GoWestAgent(Agent):
     "An agent that goes West until it can't."
@@ -181,19 +180,6 @@ class PositionSearchProblem(search.SearchProblem):
 
         return isGoal
 
-    #New adder
-    def setStartState(self, x, y):
-        self.startState = (x, y)
-
-    def getGoalState(self):
-        return self.goal
-    
-    def getWalls(self):
-        return self.walls
-    
-    def isWall(self, x, y):
-        return self.walls[x][y]
-
     def getSuccessors(self, state):
         """
         Returns successor states, the actions they require, and a cost of 1.
@@ -266,14 +252,7 @@ class UnknownPositionSearchProblem(search.SearchProblem):
         self.height = self.walls.height
         
         # initialize the wall in the grid world
-        # for points in self.primaryWalls.asList():
-        #     if points[1] == 0 or points[1] == self.width: #should be self.height
-        #         continue
-        #     if points[0] == 0 or points[0] == self.height: #should be self.width
-        #         continue
-        #     self.primaryWalls[points[0]][points[1]] = False  # we don't know about any walls at the start
-        
-        
+
         right, top = self.width-2, self.height-2
         for x in range(1, right+1):  
             for y in range(1, top+1):

@@ -11,45 +11,35 @@
 
 import util
 
-# global variables
 COST = 1
-# BENCHMARK = None
 
-# assumptions:
-# all edge weights are either 1 (adjacent) or infinity (non-adjacent or walls)
-# 2-dimensional, rectilinear map; all squares which are adjacent are connected by default
-
-# noinspection PyAttributeOutsideInit
 class LPAStar(object):
     def __init__(self, problem, Heuristic=util.manhattanDistance):
-        self.h = Heuristic  # expects a lambda that can be called
+        self.h = Heuristic
         self.U = util.PQueue()
         self.start = problem.getStartState()
-        self.goal = problem.getGoalState()  #Add getGoalState in the searchAgent
+        self.goal = problem.getGoalState()
 #        self.next = None
         
         self.hasPath = False
         self.bestPath = None
-        # self._last_path = None
         self.path = []
         self.popCount = 0
-#        self.changedEdges = list()  #new adder
           
         self.width = problem.getWalls().width
         self.height = problem.getWalls().height
         self.isPrimaryWall = problem.getPrimaryWalls()
 
-        # init the start node
         self.g_rhsTuple = dict()
         for i in range(self.width):
             for j in range(self.height):
                 self.g_rhsTuple[(i,j)] = [float("inf"),float("inf")]
         
         self.g_rhsTuple[self.start][1] = 0
-        self.U.insert(self.start, self.calculateKey(self.start))  ##modify the k1, k2 in the U.insert
+        self.U.insert(self.start, self.calculateKey(self.start))    # Update the U list
 
-    def calculateKey(self, u):  #u: first time is the goal state(x,y)
-        heuristic = self.h(u, self.goal) #manhattan distance
+    def calculateKey(self, u):
+        heuristic = self.h(u, self.goal) # manhattan distance is considered to be the heuristic
         g_rhsTuple = self.g_rhsTuple[u]
         return min(g_rhsTuple) + heuristic, min(g_rhsTuple)  #return keys = [k1,k2]
 
@@ -57,39 +47,30 @@ class LPAStar(object):
         if extraNode is None:
             extraNode = self.start
 
-        # update rhs (if not start node)
         if u != extraNode:
-            rhs_u = float("inf")  # if this node is a wall, the new rhs(s) is infinity
+            rhs_u = float("inf")
             rhslist = [float("inf")]
             if not self.isPrimaryWall[u[0]][u[1]]:
                 neighbors = self.getNeighbors(u)                
                 for neighbor in neighbors:
-                    # rhs_u = min(rhs_u, self.get_g_rhsTuple(neighbor)[0] + COST) #calculate the rhs(s) in the next step
-                    rhslist.append(min(rhs_u, self.g_rhsTuple[neighbor][0] + COST)) #calculate the rhs(s) in the next step
-            # self.set_g_rhsTuple(u, (BENCHMARK, rhs_u)) #update the rhs(s)
-            self.g_rhsTuple[u][1] = min(rhslist)  #update the rhs(s)
+                    rhslist.append(min(rhs_u, self.g_rhsTuple[neighbor][0] + COST))
+            self.g_rhsTuple[u][1] = min(rhslist)  #update the rhs value
             
 
-        # remove from U
         self.U.removeU(u)
 
-        # re-insert if locally underconsistent (inequality partially satisfied by upstream computeShortestPath)
-        # g, rhs = self.get_g_rhsTuple(u)
         g, rhs = self.g_rhsTuple[u]
         if g != rhs:
-            self.U.insert(u, self.calculateKey(u)) #U.insert is the function of CalcualteKey(u)
+            self.U.insert(u, self.calculateKey(u))
 
     def computeShortestPath(self):
         if self.hasPath:
-            return  # do nothing if the priority queue is already empty.
+            return  # If the priority queue is empty, return nothing.
 
-        # implicitly assumes start to goal
         g_Sgoal, rhs_Sgoal = self.g_rhsTuple[self.goal]
 #        print('Before Values are ', (g_Sgoal, rhs_Sgoal))
 
-        topKeys = self.U.topKey()
-        calculateKey = self.calculateKey(self.goal)
-        while self.keyComparision(topKeys, calculateKey) or (g_Sgoal != rhs_Sgoal):           
+        while (self.U.size() > 0 and self.keyComparision(self.U.topKey(), self.calculateKey(self.goal))) or (g_Sgoal != rhs_Sgoal):           
             u = self.U.pop()
             self.popCount += 1
             g_u, rhs_u = self.g_rhsTuple[u]
@@ -104,11 +85,8 @@ class LPAStar(object):
                                       # under consistent cases.
                                
             # Update the variables for next iteration in the loop       
-            if self.U.size() == 0:
-                break                 # if every node is consistent then break
+             # if every node is consistent then break
             g_Sgoal, rhs_Sgoal = self.g_rhsTuple[self.goal]
-            calculateKey = self.calculateKey(self.goal)
-            topKeys = self.U.topKey()
         
 #        print('After Values are ', (g_Sgoal, rhs_Sgoal))
         self.hasPath = True

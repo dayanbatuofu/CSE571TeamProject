@@ -20,7 +20,8 @@ Pacman agents (in searchAgents.py).
 import util
 from game import Actions
 import lifelongPlanningAStar as lpa
-import dStarlite as dsl
+import dStar as dsl
+# import d_star_lite_hans as dsl
 from game import Directions
 
 N = Directions.NORTH
@@ -257,66 +258,70 @@ def getDirection(currNode, nextNode):
 
 def simpleReplanningAStarSearch(problem, heuristic):
     """
-    This definition is for simple replanning A* search algorithm, where the
-    agent doesn't have any information about the obstacles. It knows only start and 
-    goal states. The environment is partially observable with the agent able to 
-    observe only the neighboring locations.
+    Applies AStarSearch in the scenario where the agent only knows the goal
+    state and does not know the location of the walls.  When the agent finds out
+    a location of a wall from its successor states, it will need to restart the
+    AStarSearch.
 
+    We can initally test the implementation of this algorithm with tinyMaze grid
+    using this command:
+    python pacman.py -l tinyMaze -p SearchAgent -a fn=nrastar,prob=ReplanningSearchProblem,heuristic=manhattanHeuristic
+
+    Then we can verify that the algorithm works with other grids, using the
+    layouts from the layouts/ directory.
     """
     startState = problem.getStartState()
     x, y = startState[0], startState[1]
     explored = []
-    directionList = aStarSearch(problem, heuristic)     # Unknown position search agent is used along
-                                                        # with aStarSearch.
-    while not problem.isGoalState((x, y)):     # Terminal State Check
+    directionList = aStarSearch(problem, heuristic)     # Get Optimal Path for grid without the knowledge
+                                                        # of the inner walls.
+#    print('---list---', directionList)
+    while (x, y) != problem.getGoalState():
         #----------loop start----------
         explored.append((x, y))
         dx, dy = Actions.directionToVector(directionList.pop(0))
         next_x, next_y = int(x + dx), int(y + dy)
+#        print('1--->', (next_x, next_y))
 
         neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
         for neighborDirection in neighborDirections:
             dx, dy = Actions.directionToVector(neighborDirection)
             nbrx, nbry = int(x + dx), int(y + dy)
-            # Check to see if neighboring location has a wall
+            # Here we check whether the neighbor location has a wall or not
             existObstacle = not problem.isPrimaryWalls(nbrx, nbry) and problem.isWall(nbrx, nbry)
             if existObstacle:
                 problem.setPrimaryWalls(nbrx, nbry)        
     
-        # Replan if the agent encounters a wall
-        if problem.isPrimaryWalls(next_x, next_y):
+        # Now that we have checked all the neighbors, replanning is done if needed i.e, when
+        # there is an internal wall encountered at the next grid.
+        if problem.isPrimaryWalls(next_x, next_y):  #if next state is the obstacle
             directionList = aStarSearch(problem, heuristic)
             dx, dy = Actions.directionToVector(directionList.pop(0))
             next_x, next_y = int(x + dx), int(y + dy)       
     
-        x, y = next_x, next_y           # Update the x,y location
-        problem.setStartState(x, y)     # Reset the start state to the current location
+        x, y = next_x, next_y           # Update the x,y location to the next grid
+        problem.setStartState(x, y)     # Since Simple Replanning A* recalculates every time it encounters
+                                        # a wall, the problem's start state is reset everytime
+
+
     explored.append((x, y))
     directions = []
     directions = [getDirection(explored[i], explored[i+1]) for i in range(len(explored)-1)]
-    problem.setStartState(startState[0], startState[1])  # reset the start state finally for accurate path cost evaluation
+    problem.setStartState(startState[0], startState[1])  # reset the start state, for accurate path cost eval
     return directions
 
 
 def lpaStarSearch(problem):  
-    # This is the main procedure of the LPA* algorithm. Its structure is created
-    # based on the pseudo code provided in the reference "https://www.aaai.org/Papers/AAAI/2002/AAAI02-072.pdf"  
-    '''
-     IMPORTANT NOTE: In the final visualization of the solution, only the optimal path from
-    the start to goal states is shown. All the backtracking done is not visualized as the time
-    taken to traverse all these back paths is significantly high.
-    However, all the visited nodes are highlighted in red color in the final simulation for reference.
-    '''
+    # This is the main procedure of the LPA* algorithm. Its structured is created
+    # based on the pseudo code provided in the reference "https://www.aaai.org/Papers/AAAI/2002/AAAI02-072.pdf"    
+    
     lpaStar = lpa.LPAStar(problem)
     startState = problem.getStartState()
     explored = []
     nodeList = lpaStar.Find_Path()[1:]  # compute the shortest path from the start location
     
-    while not problem.isGoalState(startState):     # Until the terminal state is reached
+    while startState != problem.getGoalState():     # Until the terminal state is reached
         explored.append(startState)
-        if startState not in problem._visited:
-            problem._visited[startState] = True
-            problem._visitedlist.append(startState)
         nextNode = nodeList.pop(0)             
         neighborDirections = [N,S,E,W]
         for neighborDirection in neighborDirections:    # For all the successors update the wall information
@@ -367,26 +372,28 @@ def lpaStarSearch(problem):
     return directions
 
 def dStarLiteSearch(problem):
-    ## This definition corresponds to the dstar lite algorithm. More details
-    # are provided in the reference "https://www.aaai.org/Papers/AAAI/2002/AAAI02-072.pdf" 
     startState = problem.getStartState()
     x, y = startState[0], startState[1]
     dStarLite = dsl.DStarLite(problem)
-    while not problem.isGoalState((x, y)):     # Terminal State Check
-        if (x, y) not in problem._visited:
-            problem._visited[(x, y)] = True
-            problem._visitedlist.append((x, y))
-        x, y = dStarLite.findNewStart()         # Update the start every loop
-        neighborDirections = [N,S,E,W]
+    print('2----->', (x,y))
+    print('3-------->',(dStarLite.width, dStarLite.height))
+    while (x, y) != problem.getGoalState():
+        x, y = dStarLite.findNewStart()  # find the new start
+        neighborDirections = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
         for neighborDirection in neighborDirections:
             dx, dy = Actions.directionToVector(neighborDirection)
             nextx, nexty = int(x + dx), int(y + dy)
-            if problem.isWall(nextx, nexty):  # Obstacle encountered. Needs to update the node values
+            print('5------->', (nextx, nexty))
+            print('6------->', problem.isWall(nextx, nexty))
+            if problem.isWall(nextx, nexty):  #edge costs have changed
                 dStarLite.nodeUpdate((nextx, nexty))  
+        # x, y = dStarLite.findNewStart()  # find the new start
+        print('10~~~~~~~~~~~~~~~~~~')
     path = dStarLite.getPath()
     directions = []
     directions = [getDirection(path[i], path[i+1]) for i in range(len(path)-1)]
     problem._expanded = dStarLite.popCount
+    print(directions)
     return directions
 
 
