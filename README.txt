@@ -32,10 +32,10 @@ We added or modified the following files:
 * `search\util.py`
 
 * Copy all the submitted files into a folder.
-* In the terminal, navigate the current directory to the above folder\search.
+* In the terminal, navigate the current folder to the above folder\search.
 * Use the following commands to run different algorithms.
 
-### Following commands are examples to run the different algorithms:
+### Following command will show the example to run the different algorithms:
 
 #### A*
 `python pacman.py -l mediumMaze -p SearchAgent -a fn=astar,prob=PositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
@@ -48,20 +48,11 @@ We added or modified the following files:
 
 `python pacman.py -l mediumMaze -p SearchAgent -a fn=lpastar,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
 
-IMPORTANT NOTE: In the final visualization of the solution, only the optimal path from
-
-    the start to goal states is shown. All the backtracking done is not visualized as the time
-	
-    taken to traverse all these back paths is significantly high.
-	
-    However, all the visited nodes are highlighted in red color in the final simulation for reference 
-
-
 #### D* Lite
 
 `python pacman.py -l mediumMaze -p SearchAgent -a fn=dstarlite,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
 
-### Following commands are examples to obtain the memory usage and running time testing for different algorithms
+### Following command will show the example to obtain the memory and running time testing for different 
 
 `test python pacman.py -l mediumMaze -p SearchAgent -a fn=dstarlite,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
 
