@@ -25,6 +25,8 @@ We add or modify these following code:
 
 #### D* Lite
 
+`python pacman.py -l mediumMaze -p SearchAgent -a fn=dstarlite,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
+
 ### Following command will show the example to obtain the memory and running time testing for different 
 
 `test python pacman.py -l mediumMaze -p SearchAgent -a fn=dstarlite,prob=UnknownPositionSearchProblem,heuristic=manhattanHeuristic --frameTime 0 -z .5`
